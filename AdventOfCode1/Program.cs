@@ -35,4 +35,9 @@ Console.WriteLine($"Day 7 Solution 1: {Day7.Solution1()}");
 Console.WriteLine($"Day 7 Solution 2: {Day7.Solution2()}");
 Console.WriteLine();
 
+var Day8 = new Day8();
+Console.WriteLine($"Day 8 Solution 1: {Day8.Solution1()}");
+Console.WriteLine($"Day 8 Solution 2: {Day8.Solution2()}");
+Console.WriteLine();
+
 Console.ReadLine(); 

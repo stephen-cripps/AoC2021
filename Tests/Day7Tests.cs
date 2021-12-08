@@ -26,11 +26,11 @@ namespace Tests
         }
 
 
-        [Fact]
-        public void GetMean()
-        {
-            Assert.Equal(5, Day7.GetMean(_puzzleInput.ToList()));
-        }
+        //[Fact]
+        //public void GetMean()
+        //{
+        //    Assert.Equal(5, Day7.GetMean(_puzzleInput.ToList()));
+        //}
 
 
         [Fact]
@@ -39,11 +39,11 @@ namespace Tests
             Assert.Equal(37, Day7.GetFuelConsumption1(_puzzleInput.ToList()));
         }
 
-        [Fact]
-        public void GetFuelConsumption2()
-        {
-            Assert.Equal(168, Day7.GetFuelConsumption2(_puzzleInput.ToList()));
-        }
+        //[Fact]
+        //public void GetFuelConsumption2()
+        //{
+        //    Assert.Equal(168, Day7.GetFuelConsumption2(_puzzleInput.ToList()));
+        //}
 
         [Fact]
         public void GetSingleCrabConsumption()

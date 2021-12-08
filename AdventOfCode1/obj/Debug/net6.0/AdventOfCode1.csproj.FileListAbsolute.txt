@@ -22,3 +22,4 @@ C:\Users\StephenCripps\source\repos\AoC\AdventOfCode1\AdventOfCode1\obj\Debug\ne
 C:\Users\StephenCripps\source\repos\AoC\AdventOfCode1\AdventOfCode1\bin\Debug\net6.0\Puzzle Inputs\Day5.txt
 C:\Users\StephenCripps\source\repos\AoC\AdventOfCode1\AdventOfCode1\bin\Debug\net6.0\Puzzle Inputs\Day6.txt
 C:\Users\StephenCripps\source\repos\AoC\AdventOfCode1\AdventOfCode1\bin\Debug\net6.0\Puzzle Inputs\Day7.txt
+C:\Users\StephenCripps\source\repos\AoC\AdventOfCode1\AdventOfCode1\bin\Debug\net6.0\Puzzle Inputs\Day8.txt
