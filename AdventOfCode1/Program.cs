@@ -42,7 +42,7 @@ Console.WriteLine();
 
 var Day9 = new Day9();
 Console.WriteLine($"Day 9 Solution 1: {Day9.Solution1()}");
-//Console.WriteLine($"Day 9 Solution 2: {Day9.Solution2()}");
+Console.WriteLine($"Day 9 Solution 2: {Day9.Solution2()}");
 Console.WriteLine();
 
 Console.ReadLine(); 
