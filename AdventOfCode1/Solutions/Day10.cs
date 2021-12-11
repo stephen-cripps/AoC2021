@@ -67,8 +67,6 @@ namespace AdventOfCode1.Solutions
 
             scores.Sort();
 
-            Console.WriteLine(String.Join(Environment.NewLine, scores));
-
             return scores[scores.Count / 2];
         }
 

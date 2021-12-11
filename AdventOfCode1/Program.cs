@@ -50,4 +50,11 @@ Console.WriteLine($"Day 10 Solution 1: {Day10.Solution1()}");
 Console.WriteLine($"Day 10 Solution 2: {Day10.Solution2()}");
 Console.WriteLine();
 
+var input11 = File.ReadAllText("./Puzzle Inputs/Day11.txt");
+var Day11 = new Day11(input11);
+Console.WriteLine($"Day 11 Solution 1: {Day11.Solution1()}");
+Day11 = new Day11(input11);
+Console.WriteLine($"Day 11 Solution 2: {Day11.Solution2()}");
+Console.WriteLine();
+
 Console.ReadLine(); 
