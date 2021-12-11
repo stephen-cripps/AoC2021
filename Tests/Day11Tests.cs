@@ -22,9 +22,8 @@ namespace Tests
 5283751526";
 
         private Day11 _day11;
-        private readonly ITestOutputHelper _testOutputHelper;
 
-        public Day11Tests(ITestOutputHelper testOutputHelper)
+        public Day11Tests()
         {
             _day11 = new Day11(InputString);
         }
@@ -56,25 +55,6 @@ namespace Tests
             Assert.Equal(_afterStep10, _day11.Input);
         }
 
-        public void WriteInput()
-        {
-            var input = _day11.Input;
-            var width = input.GetLength(0);
-            var height = input.GetLength(1);
-
-            for (var i = 0; i < width; i++)
-            {
-                var line = "";
-                for (var j = 0; j < height; j++)
-                {
-                    line+=input[i, j];
-                }
-                _testOutputHelper.WriteLine(line);
-            }
-            _testOutputHelper.WriteLine("");
-        }
-
-
         [Fact]
         public void FlashesAfterNSteps()
         {
@@ -85,12 +65,6 @@ namespace Tests
             Assert.Equal(1656, result);
 
             _day11 = new Day11(InputString);
-            _day11.FlashesAfterNSteps(193);
-            WriteInput();
-            _day11.Step();
-            WriteInput();
-            _day11.Step();
-            WriteInput();
         }
 
         [Fact]
