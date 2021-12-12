@@ -57,4 +57,9 @@ Day11 = new Day11(input11);
 Console.WriteLine($"Day 11 Solution 2: {Day11.Solution2()}");
 Console.WriteLine();
 
+var Day12 = new Day12();
+Console.WriteLine($"Day 12 Solution 1: {Day12.Solution1()}");
+Console.WriteLine($"Day 12 Solution 2: {Day12.Solution2()}");
+Console.WriteLine();
+
 Console.ReadLine(); 

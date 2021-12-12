@@ -1,5 +1,4 @@
 ﻿using AdventOfCode1.Extensions;
-using System.Linq;
 
 namespace AdventOfCode1.Solutions
 {

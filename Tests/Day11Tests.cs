@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AdventOfCode1.Extensions;
+﻿using AdventOfCode1.Extensions;
 using AdventOfCode1.Solutions;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Tests
 {
