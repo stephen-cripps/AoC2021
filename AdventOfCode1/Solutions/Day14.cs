@@ -49,7 +49,6 @@ public class Day14
 
         for (var j = 0; j < n; j++)
         {
-            Console.WriteLine($"{j}: Elements = {elements.Count}, Pairs ={pairs.Count}");
             var newPairs = new Dictionary<string, long>();
             foreach (var (pair, count) in pairs)
             {
