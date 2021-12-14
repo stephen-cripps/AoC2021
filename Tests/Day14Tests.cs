@@ -16,32 +16,9 @@ public class Day14Tests
     }
 
     [Fact]
-    public void ApplyInsertionStep()
-    {
-        var result = Day14.ApplyInsertionStep(_polymer, _insertions);
-        Assert.Equal("NCNBCHB", result);
-
-        result = Day14.ApplyInsertionStep(result, _insertions);
-        Assert.Equal("NBCCNBBBCBHCB", result);
-
-        result = Day14.ApplyInsertionStep(result, _insertions);
-        Assert.Equal("NBBBCNCCNBBNBNBBCHBHHBCHB", result);
-
-        result = Day14.ApplyInsertionStep(result, _insertions);
-        Assert.Equal("NBBNBNBBCCNBCNCCNBBNBBNBBBNBBNBBCBHCBHHNHCBBCBHCB", result);
-    }
-
-    [Fact]
-    public void ApplyNInsertions()
-    {
-        Assert.Equal(97, Day14.ApplyNInsertions(_polymer, _insertions, 5).Length);
-
-        Assert.Equal(3073, Day14.ApplyNInsertions(_polymer, _insertions, 10).Length);
-    }
-
-    [Fact]
     public void GetCommonalityDiff()
     {
+        Assert.Equal(1, Day14.GetCommonalityDiff(_polymer, _insertions, 1));
         Assert.Equal(1588, Day14.GetCommonalityDiff(_polymer, _insertions, 10));
     }
 

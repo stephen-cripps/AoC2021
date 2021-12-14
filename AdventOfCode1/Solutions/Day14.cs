@@ -24,44 +24,55 @@ public class Day14
         return (polymer, insertions);
     }
 
-    public int Solution1() => GetCommonalityDiff(_polymer, _insertions, 10);
-    public int Solution2() => 0;
+    public long Solution1() => GetCommonalityDiff(_polymer, _insertions, 10);
+    public long Solution2() => GetCommonalityDiff(_polymer, _insertions, 40);
 
-    public static int GetCommonalityDiff(string polymer, Dictionary<string, string> insertions, int n)
+    public static long GetCommonalityDiff(string polymer, Dictionary<string, string> insertions, int n)
     {
-        var result = ApplyNInsertions(polymer, insertions, n);
+        var elements = new Dictionary<string, long>();
+        var pairs = new Dictionary<string, long>();
+        var i = 0;
 
-        var groupedResult = result.GroupBy(i => i)
-            .OrderByDescending(grp => grp.Count());
-
-        return groupedResult.First().Count() - groupedResult.Last().Count();
-    }
-
-    public static string ApplyNInsertions(string polymer, Dictionary<string, string> insertions, int n)
-    {
-        var result = new string(polymer);
-
-        for (var i = 0; i < n; i++)
-            result = ApplyInsertionStep(result, insertions);
-
-        return result;
-    }
-
-    public static string ApplyInsertionStep(string polymer, Dictionary<string, string> insertions)
-    {
-        var result = "";
-
-        for (var i = 0; i < polymer.Length - 1; i++)
+        foreach (var element in polymer)
         {
-            result += polymer[i];
+            elements.TryAdd(element.ToString(), 0);
+            elements[element.ToString()]++;
 
-            if (insertions.TryGetValue("" + polymer[i] + polymer[i + 1], out var insertion))
-                result += insertion;
+            if (i >= polymer.Length - 1) continue;
+
+            var pair = "" + polymer[i] + polymer[i + 1];
+            pairs.TryAdd(pair,0);
+            pairs[pair]++;
+
+            i++;
         }
 
-        result += polymer.Last();
+        for (var j = 0; j < n; j++)
+        {
+            Console.WriteLine($"{j}: Elements = {elements.Count}, Pairs ={pairs.Count}");
+            var newPairs = new Dictionary<string, long>();
+            foreach (var (pair, count) in pairs)
+            {
+                var insert = insertions[pair];
+                elements.TryAdd(insert, 0);
+                elements[insert] += count;
 
-        return result;
+                var new1 = pair[0] + insert;
+                var new2 = insert + pair[1];
+
+                newPairs.TryAdd(new1, 0);
+                newPairs[new1] += count;
+
+                newPairs.TryAdd(new2, 0);
+                newPairs[new2] += count;
+            }
+
+            pairs=newPairs;
+        }
+
+        var largest = elements.OrderBy(e => e.Value).Last().Value;
+        var smallest = elements.OrderBy(e => e.Value).First().Value;
+
+        return largest - smallest;
     }
-
 }
