@@ -21,11 +21,6 @@ public class Day13
 
         var maxX = solution.ToList().Select(d => d[0]).Max();
         var maxY = solution.ToList().Select(d => d[1]).Max();
-        var minX = solution.ToList().Select(d => d[0]).Min();
-        var minY = solution.ToList().Select(d => d[1]).Min();
-
-        Console.WriteLine(maxX + "," + maxY);
-        Console.WriteLine(minX + "," + minY);
 
         for (var i = 0; i <= maxY; i++)
         {
