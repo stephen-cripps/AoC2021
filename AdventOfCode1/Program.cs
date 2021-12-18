@@ -74,7 +74,7 @@ Console.WriteLine($"Day 14 Solution 2: {Day14.Solution2()}");
 Console.WriteLine();
 
 var Day15 = new Day15(File.ReadAllText("./Puzzle Inputs/Day15.txt"));
-//Console.WriteLine($"Day 15 Solution 1: {Day15.Solution1()}");
+Console.WriteLine($"Day 15 Solution 1: {Day15.Solution1()}");
 Day15 = new Day15(File.ReadAllText("./Puzzle Inputs/Day15.txt"));
 Console.WriteLine($"Day 15 Solution 2: {Day15.Solution2()}");
 Console.WriteLine();

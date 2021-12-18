@@ -11,11 +11,6 @@ public class Day15
         Input = input.ToMultiIntArray();
     }
 
-    //Possible Optimisations 
-    // - Don't actually tile the input
-    // - improve how we're finding the next node 
-    // - Investigate A*
-
     public int Solution1() => GetPathRisk();
 
     public long Solution2()
@@ -54,86 +49,52 @@ public class Day15
 
     public int GetPathRisk()
     {
-        var shortestPathTreeSet = new List<int>();
         var positions = InitialisePositions();
+        var potentialNodes = new Dictionary<(int row, int col), Position>() { { (0, 0), positions[(0, 0)] } };
 
-        var currentId = 0;
-
-        while (shortestPathTreeSet.Count < positions.Count)
+        while (potentialNodes.Any())
         {
-            shortestPathTreeSet.Add(currentId);
-            UpdateDistances(positions, currentId);
+            var currentNode = potentialNodes
+                .MinBy(p => p.Value.MinPathDistance)
+                .Value;
 
-            if (shortestPathTreeSet.Count % 100 == 0)
-                Console.WriteLine($"{shortestPathTreeSet.Count} of {positions.Count} nodes");
+            UpdateDistances(positions, currentNode, potentialNodes);
+            currentNode.InTreeSet = true;
 
-            currentId = positions
-                .Where(p => !shortestPathTreeSet.Contains(p.Key))
-                .OrderBy(p => p.Value.MinPathDistance)
-                .FirstOrDefault()
-                .Key;
-        }
-
-        var i = 0;
-        foreach (var pos in positions)
-        {
-            Console.Write(pos.Value.MinPathDistance + "\t");
-
-            if (i == 9)
-            {
-                Console.WriteLine();
-                i = -1;
-            }
-
-            i++;
+            potentialNodes.Remove((currentNode.Row, currentNode.Col));
         }
 
         return positions.Last().Value.MinPathDistance;
     }
 
-    private void UpdateDistances(Dictionary<int, Position> positions, int currentId)
+    private void UpdateDistances(Dictionary<(int row, int col), Position> positions, Position currentPosition, Dictionary<(int row, int col), Position> potentialNodes)
     {
-        var currentPosition = positions[currentId];
         var row = currentPosition.Row;
         var col = currentPosition.Col;
 
-        if (positions.TryGetValue(GetId(row - 1, col), out var positionAbove))
-        {
-            positionAbove.MinPathDistance = Math.Min(positionAbove.MinPathDistance,
-                currentPosition.MinPathDistance + positionAbove.StepValue);
-        }
+        var coords = new List<int[]> { new[] { row - 1, col }, new[] { row + 1, col }, new[] { row, col - 1 }, new[] { row, col + 1 } };
 
-        if (positions.TryGetValue(GetId(row + 1, col), out var positionBelow))
+        foreach (var coord in coords)
         {
-            positionBelow.MinPathDistance = Math.Min(positionBelow.MinPathDistance,
-                currentPosition.MinPathDistance + positionBelow.StepValue);
-        }
+            if (positions.TryGetValue((coord[0], coord[1]), out var neighbour) && !neighbour.InTreeSet)
+            {
+                neighbour.MinPathDistance = Math.Min(neighbour.MinPathDistance, currentPosition.MinPathDistance + neighbour.StepValue);
 
-        if (col < Input.GetLength(1) - 1)
-        {
-            var positionRight = positions[GetId(row, col + 1)];
-            positionRight.MinPathDistance = Math.Min(positionRight.MinPathDistance,
-                currentPosition.MinPathDistance + positionRight.StepValue);
-        }
-
-        if (col > 0)
-        {
-            var positionLeft = positions[GetId(row, col - 1)];
-            positionLeft.MinPathDistance = Math.Min(positionLeft.MinPathDistance,
-                currentPosition.MinPathDistance + positionLeft.StepValue);
+                potentialNodes.TryAdd((coord[0], coord[1]), neighbour);
+            }
         }
     }
 
-    private Dictionary<int, Position> InitialisePositions()
+    private Dictionary<(int row, int col), Position> InitialisePositions()
     {
         var rows = Input.GetLength(0);
         var cols = Input.GetLength(1);
 
-        var positions = new Dictionary<int, Position>();
+        var positions = new Dictionary<(int row, int col), Position>();
         for (var i = 0; i < rows; i++)
         {
             for (var j = 0; j < cols; j++)
-                positions.Add(GetId(i, j), new Position
+                positions.Add((i, j), new Position
                 {
                     Row = i,
                     Col = j,
@@ -142,12 +103,10 @@ public class Day15
                 });
         }
 
-        positions[0].MinPathDistance = 0;
+        positions[(0, 0)].MinPathDistance = 0;
 
         return positions;
     }
-
-    private int GetId(int row, int col) => row * Input.GetLength(0) + col;
 
     public class Position
     {
@@ -155,5 +114,6 @@ public class Day15
         public int Col;
         public int MinPathDistance;
         public int StepValue;
+        public bool InTreeSet;
     }
 }
