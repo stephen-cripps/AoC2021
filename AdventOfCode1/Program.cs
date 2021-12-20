@@ -84,9 +84,14 @@
 //Console.WriteLine($"Day 16 Solution 2: {day16.Solution2()}");
 //Console.WriteLine();
 
-var (maxY, successCount) = Day17.GetBestLaunchHeight(14, 50, -267, -225);
-Console.WriteLine($"Day 17 Solution 1: {maxY}");
-Console.WriteLine($"Day 17 Solution 2: {successCount}");
+//var (maxY, successCount) = Day17.GetBestLaunchHeight(14, 50, -267, -225);
+//Console.WriteLine($"Day 17 Solution 1: {maxY}");
+//Console.WriteLine($"Day 17 Solution 2: {successCount}");
+//Console.WriteLine();
+
+var day18 = new Day18();
+Console.WriteLine($"Day 18 Solution 1: {day18.Solution1()}");
+Console.WriteLine($"Day 18 Solution 2: {day18.Solution2()}");
 Console.WriteLine();
 
 Console.ReadLine(); 

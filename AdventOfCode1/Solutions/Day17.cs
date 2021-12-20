@@ -24,8 +24,6 @@ public class Day17
                 if (attemptHeight > maxY)
                     maxY = attemptHeight;
             }
-
-            Console.WriteLine($"{i} of {targetXMax}");
         }
 
         return (maxY, successCount);
