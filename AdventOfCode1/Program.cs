@@ -78,10 +78,15 @@
 //Console.WriteLine($"Day 15 Solution 2: {day15.Solution2()}");
 //Console.WriteLine();
 
-var day16 = new Day16();
-Console.WriteLine($"Day 16 Solution 1: {day16.Solution1()}");
-day16.Versions.Clear();
-Console.WriteLine($"Day 16 Solution 2: {day16.Solution2()}");
+//var day16 = new Day16();
+//Console.WriteLine($"Day 16 Solution 1: {day16.Solution1()}");
+//day16.Versions.Clear();
+//Console.WriteLine($"Day 16 Solution 2: {day16.Solution2()}");
+//Console.WriteLine();
+
+var (maxY, successCount) = Day17.GetBestLaunchHeight(14, 50, -267, -225);
+Console.WriteLine($"Day 17 Solution 1: {maxY}");
+Console.WriteLine($"Day 17 Solution 2: {successCount}");
 Console.WriteLine();
 
 Console.ReadLine(); 
